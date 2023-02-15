@@ -11,6 +11,7 @@ public class Patient {
     private Integer idPatient;
     private String firstName;
     private String lastName;
+    private String address;
 
     @OneToOne
     @JoinColumn(name = "idAccount")
@@ -19,11 +20,11 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(Integer idPatient, String firstName, String lastName,Account account) {
+    public Patient(Integer idPatient, String firstName, String lastName,Account account, String address) {
         this.idPatient = idPatient;
         this.firstName = firstName;
         this.lastName = lastName;
-
+        this.address=address;
         this.account = account;
     }
 
@@ -58,5 +59,13 @@ public class Patient {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
