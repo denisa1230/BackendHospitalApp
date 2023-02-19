@@ -27,5 +27,8 @@ public class AccountController {
     public Account getAccount (@PathVariable String email){
         return accountService.getAccountByEmail(email);
     }
-
+    @PostMapping("saveDoctor")
+    public Account saveDoctorAccount(DoctorAccountDto doctorAccountDto){
+        return accountService.saveDoctorAccount(doctorAccountDto);
+    }
 }

@@ -32,6 +32,17 @@ public class HospitalController {
         hospitalService.saveHospital(hospital);
     }
 
+    @GetMapping(value="/deleteHospital/{id}")
+    public void deleteHospital(@PathVariable Integer id){
+        hospitalService.deleteHospital(id);
+    }
+    @PostMapping(value="/updateHospital")
+    public void updateHospital(@RequestBody Hospital hospital){
+        hospitalService.updateHospital(hospital,hospital.getIdHospital());
+    }
+
+
+
     @GetMapping("getAllSectionByHospital/{name}")
     public List<Section> getSectionsByHospital(@PathVariable String name){
         return hospitalService.getSectionsByHospital(name);

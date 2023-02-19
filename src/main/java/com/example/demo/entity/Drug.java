@@ -9,27 +9,30 @@ import javax.persistence.Id;
 public class Drug {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    private Integer idDrug;
 
     private String drugName;
 
-    private Float price;
+    private String dosage;
+    private String status;
 
     public Drug() {
     }
 
-    public Drug(Integer id, String drugName, Float price) {
-        this.id = id;
+    public Drug(Integer idDrug, String drugName, String dosage, String status) {
+
+        this.idDrug = idDrug;
         this.drugName = drugName;
-        this.price = price;
+        this.dosage = dosage;
+        this.status=status;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdDrug() {
+        return idDrug;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdDrug(Integer idDrug) {
+        this.idDrug = idDrug;
     }
 
     public String getDrugName() {
@@ -40,11 +43,19 @@ public class Drug {
         this.drugName = drugName;
     }
 
-    public Float getPrice() {
-        return price;
+    public String getDosage() {
+        return dosage;
     }
 
-    public void setPrice(Float price) {
-        this.price = price;
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

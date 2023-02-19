@@ -28,9 +28,10 @@ public class Hospital {
     public Hospital(Integer idHospital, String name, String locality, String county, String address, String country) {
         this.idHospital = idHospital;
         this.name = name;
+        this.address=address;
         this.locality = locality;
         this.county = county;
-        this.address=address;
+
         this.country=country;
     }
 
@@ -81,4 +82,5 @@ public class Hospital {
     public void setAddress(String address) {
         this.address = address;
     }
+
 }

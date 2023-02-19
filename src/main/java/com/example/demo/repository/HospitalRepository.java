@@ -13,6 +13,7 @@ public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
     public List<Hospital> findAll();
     public Hospital findByName(String name);
 
-    public Hospital findByIdHospitalAndName(Integer hospitalId, String name);
+    public Hospital findByIdHospital(Integer hospitalId);
+
 
 }
