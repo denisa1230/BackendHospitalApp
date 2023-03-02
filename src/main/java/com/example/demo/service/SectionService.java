@@ -46,4 +46,20 @@ public class SectionService {
         return sectionRepository.getByName(name);
 
     }
+    public void deleteSection( Integer id) {
+        List<Section> sections = sectionRepository.findAll();
+        for (Section s : sections) {
+            if (s.getIdSection() == id) {
+                sectionRepository.delete(s);
+
+            }
+        }
+    }
+    public Section updateSection(Section section, Integer id){
+        Section section1=sectionRepository.findByIdSection(id);
+        section1.setName(section.getName());
+        section1.setHospital(section.getHospital());
+        return sectionRepository.save(section);
+
+    }
 }

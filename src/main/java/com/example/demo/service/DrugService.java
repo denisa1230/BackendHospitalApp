@@ -39,6 +39,7 @@ public class DrugService {
         drug1.setIdDrug(drug.getIdDrug());
         drug1.setDrugName(drug.getDrugName());
         drug1.setDosage(drug.getDosage());
+        drug1.setStatus(drug.getStatus());
         return drugRepository.save(drug1);
     }
 

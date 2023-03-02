@@ -12,6 +12,8 @@ import java.util.List;
 public interface SectionRepository extends JpaRepository<Section, Integer> {
     public Section getByName(String name);
     public List<Section> getByHospital(Hospital hospital);
+    public Section findByIdSection(Integer id);
+
 
 
 }
