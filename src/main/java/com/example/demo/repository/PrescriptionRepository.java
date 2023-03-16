@@ -1,7 +1,6 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.Patient;
-import com.example.demo.entity.PossibleDiagnosis;
 import com.example.demo.entity.Prescription;
 import org.springframework.data.jpa.repository.JpaRepository;
 

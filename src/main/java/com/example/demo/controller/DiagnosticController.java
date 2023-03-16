@@ -1,32 +1,43 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Appointment;
 import com.example.demo.entity.Diagnostic;
-import com.example.demo.entity.Drug;
 import com.example.demo.service.DiagnosticService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@CrossOrigin(maxAge = 3600)
+@RequestMapping("/diagnostic")
 public class DiagnosticController {
     @Autowired
-    DiagnosticService diagnosticService;
+    DiagnosticService diagnosticService ;
 
-    @DeleteMapping("delete")
-    public void delete (@RequestBody Diagnostic diagnostic){
-         diagnosticService.deleteDiagnostic(diagnostic);
+    public DiagnosticController() {
+        diagnosticService = new DiagnosticService();
     }
-    @GetMapping("getDiagnostic")
-    public List<Diagnostic>  getDiagnosticByAppointment(@RequestBody Appointment appointment){
-        return diagnosticService.getDiagnosticByAppointment(appointment);
 
+    @GetMapping("getPossibleDiagnosisByDetails/{details}")
+    public Diagnostic getPossibleDiagnosisByDetails(@PathVariable String details) {
+        return diagnosticService.getDiagnosisByDetails(details);
     }
+    @GetMapping("findAllDiagnosis")
+    public List<Diagnostic> findAll(){
+       return diagnosticService.findAllDiagnostic();
+    }
+
     @PostMapping("saveDiagnostic")
-    public void saveDiagnosticById(@RequestBody Diagnostic diagnostic) {
-        diagnosticService.saveDiagnostic(diagnostic);
+    public void savePossibleDiagnosis(@RequestBody Diagnostic diagnostic) {
+        diagnosticService.saveDiagnosis(diagnostic);
+    }
+    @GetMapping(value="/deleteDiagnostic/{id}")
+    public void deleteDiagnostic(@PathVariable Integer id){
+        diagnosticService.deleteDiagnostic(id);
+    }
+
+    @PostMapping(value="/updateDiagnostic")
+    public void updateDiagnostic(@RequestBody Diagnostic possibleDiagnosis){
+        diagnosticService.updateDiagnostic(possibleDiagnosis, possibleDiagnosis.getIdDiagnostic());
     }
 }

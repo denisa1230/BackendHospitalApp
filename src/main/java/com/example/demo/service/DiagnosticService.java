@@ -1,37 +1,45 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Appointment;
 import com.example.demo.entity.Diagnostic;
-import com.example.demo.entity.Drug;
-import com.example.demo.entity.PossibleDiagnosis;
-import com.example.demo.repository.AppointmentRepository;
 import com.example.demo.repository.DiagnosticRepository;
-import com.example.demo.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DiagnosticService {
     @Autowired
-   private DiagnosticRepository diagnosticRepository;
-    @Autowired
-   private AppointmentRepository appointmentRepository;
-    @Autowired
-    private PatientService patientService;
-    @Autowired
-    private PatientRepository patientRepository;
+    private DiagnosticRepository diagnosticRepository;
 
-    public void deleteDiagnostic(Diagnostic diagnostic)
-    {
-        diagnosticRepository.delete(diagnostic);
-    }
-    public List<Diagnostic> getDiagnosticByAppointment(Appointment appointment)
-    {
-        return diagnosticRepository.getDiagnosticByAppointment(appointment);
+    public void saveDiagnosis(Diagnostic diagnosis) {
+        diagnosticRepository.save(diagnosis);
     }
 
-    public void saveDiagnostic(Diagnostic diagnostic) {
-        diagnosticRepository.save(diagnostic);
+    public Diagnostic getDiagnosisByDetails(String details) {
+        return diagnosticRepository.findByDetails(details);
+    }
+    public List<Diagnostic> findAllDiagnostic()
+    {
+        return diagnosticRepository.findAll();
+    }
+    public void deleteDiagnostic(Integer id)
+    {
+        List<Diagnostic> diagnostics=diagnosticRepository.findAll();
+        for (Diagnostic d :diagnostics)
+        {
+            if (d.getIdDiagnostic()== id){
+                diagnosticRepository.delete(d);
+            }
+        }
+    }
+    public Diagnostic updateDiagnostic (Diagnostic diagnostic, Integer idDiagnostic) {
+        Diagnostic diagnostic1 = diagnosticRepository.findByIdDiagnostic(idDiagnostic);
+        diagnostic1.setIdDiagnostic(diagnostic.getIdDiagnostic());
+        diagnostic1.setName(diagnostic.getName());
+        diagnostic1.setDetails(diagnostic.getDetails());
+        diagnostic1.setStatus(diagnostic.getStatus());
+        return diagnosticRepository.save(diagnostic1);
     }
 
 }

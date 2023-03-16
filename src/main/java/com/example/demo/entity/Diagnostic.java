@@ -1,38 +1,39 @@
 package com.example.demo.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Diagnostic {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer idDiagnostic;
+
     private String name;
     private String details;
-    @ManyToOne
-    @JoinColumn(name = "idAppointment")
-    private Appointment appointment;
-    @ManyToOne
-    @JoinColumn(name = "idPossibleDiagnosis")
-    private PossibleDiagnosis possibleDiagnosis;
+
+    private String status;
 
     public Diagnostic() {
     }
 
-    public Diagnostic(Integer idDiagnostic, String name, String details, Appointment appointment, PossibleDiagnosis possibleDiagnosis) {
+    public Diagnostic(Integer idDiagnostic, String details, String name, String status) {
         this.idDiagnostic = idDiagnostic;
-        this.name = name;
         this.details = details;
-        this.appointment = appointment;
-        this.possibleDiagnosis = possibleDiagnosis;
+        this.name=name;
+        this.status=status;
     }
 
-    public Integer getIdDiagnostic() {
-        return idDiagnostic;
+
+
+    public String getDetails() {
+        return details;
     }
 
-    public void setIdDiagnostic(Integer idDiagnostic) {
-        this.idDiagnostic = idDiagnostic;
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public String getName() {
@@ -43,27 +44,19 @@ public class Diagnostic {
         this.name = name;
     }
 
-    public String getDetails() {
-        return details;
+    public Integer getIdDiagnostic() {
+        return idDiagnostic;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setIdDiagnostic(Integer idDiagnostic) {
+        this.idDiagnostic = idDiagnostic;
     }
 
-    public Appointment getAppointment() {
-        return appointment;
+    public String getStatus() {
+        return status;
     }
 
-    public void setAppointment(Appointment appointment) {
-        this.appointment = appointment;
-    }
-
-    public PossibleDiagnosis getPossibleDiagnosis() {
-        return possibleDiagnosis;
-    }
-
-    public void setPossibleDiagnosis(PossibleDiagnosis possibleDiagnosis) {
-        this.possibleDiagnosis = possibleDiagnosis;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

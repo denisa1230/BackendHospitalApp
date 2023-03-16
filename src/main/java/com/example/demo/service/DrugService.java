@@ -25,7 +25,7 @@ public class DrugService {
         return drugRepository.findAll();
     }
 
-    public void deletedrug( Integer id) {
+    public void deleteDrug( Integer id) {
         List<Drug> drug = drugRepository.findAll();
         for (Drug s : drug) {
             if (s.getIdDrug() == id) {

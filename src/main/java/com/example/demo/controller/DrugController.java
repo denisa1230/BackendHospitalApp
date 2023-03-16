@@ -32,7 +32,7 @@ public class DrugController {
     }
     @GetMapping(value="/deleteDrug/{id}")
     public void deleteDrug(@PathVariable Integer id){
-        drugService.deletedrug(id);
+        drugService.deleteDrug(id);
     }
     @PostMapping(value="/updateDrug")
     public void updateDrug(@RequestBody Drug drug){
