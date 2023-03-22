@@ -18,8 +18,17 @@ public class PatientController {
     public Patient getPatientByFirstName(@PathVariable String firstName){
         return  patientService.getByFirstName(firstName);
     }
+    @GetMapping("getPatientByAccount/{email}")
+    public Patient  getPatientByAccount(@PathVariable String email) {
+        return patientService.getPatientByAccount(email);
+    }
     @GetMapping("getAllPatient")
     public List<Patient> getAllPatient() {
         return patientService.getAllPatient();
+    }
+
+    @PostMapping(value="/updatePatient")
+    public void updatePatient(@RequestBody Patient patient){
+        patientService.updatePatient(patient, patient.getIdPatient());
     }
 }

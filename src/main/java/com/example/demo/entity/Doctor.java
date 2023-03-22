@@ -1,6 +1,9 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 public class Doctor {
@@ -10,7 +13,11 @@ public class Doctor {
     private String firstName;
     private String lastName;
     private String email;
+
+    private Long phone;
+    private String description;
     private String specialization;
+    private String program;
 
     @ManyToOne
     @JoinColumn(name="idSection")
@@ -23,15 +30,19 @@ public class Doctor {
     public Doctor() {
     }
 
-    public Doctor(Integer idDoctor, String firstName, String lastName, String email, String specialization, Account account) {
+
+    public Doctor(Integer idDoctor, String firstName, String lastName, String email, Long phone, String description, String specialization, Section section, Account account, String program) {
         this.idDoctor = idDoctor;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.phone = phone;
+        this.description = description;
         this.specialization = specialization;
-        this.account=account;
+        this.section = section;
+        this.account = account;
+        this.program=program;
     }
-
 
     public Integer getIdDoctor() {
         return idDoctor;
@@ -87,5 +98,29 @@ public class Doctor {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getProgram() {
+        return program;
+    }
+
+    public void setProgram(String program) {
+        this.program = program;
     }
 }

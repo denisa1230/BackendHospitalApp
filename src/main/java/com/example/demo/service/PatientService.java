@@ -27,8 +27,25 @@ public class PatientService {
     }
 
     public Patient savePatient(Patient patient) {
-        Account account = accountRepository.getByEmail(patient.getAccount().getEmail());
+        Account account = accountRepository.findByEmail(patient.getAccount().getEmail());
         patient.setAccount(account);
         return patientReposiroty.save(patient);
+    }
+
+    public Patient getPatientByAccount(String email)
+    {
+        Account account=accountRepository.findByEmail(email);
+        return patientReposiroty.findByAccount(account);
+    }
+    public Patient updatePatient (Patient patient, Integer id){
+        Patient patient1=patientReposiroty.findByIdPatient(id);
+        patient1.setFirstName(patient.getFirstName());
+        patient1.setLastName(patient.getLastName());
+        patient1.setGender(patient.getGender());
+        patient1.setBirth(patient.getBirth());
+        patient1.setPhone(patient.getPhone());
+        patient1.setAddress(patient.getAddress());
+        patient1.setEmail(patient.getEmail());
+        return patientReposiroty.save(patient1);
     }
 }

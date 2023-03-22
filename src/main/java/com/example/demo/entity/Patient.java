@@ -1,5 +1,4 @@
 package com.example.demo.entity;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,6 +12,15 @@ public class Patient {
     private String lastName;
     private String address;
 
+    private Long phone;
+
+    private String email;
+
+    private String gender;
+
+    private Date birth;
+
+
     @OneToOne
     @JoinColumn(name = "idAccount")
     private Account account;
@@ -20,11 +28,15 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(Integer idPatient, String firstName, String lastName,Account account, String address) {
+    public Patient(Integer idPatient, String firstName, String lastName, String address, Long phone, String email, String gender, Date birth, Account account) {
         this.idPatient = idPatient;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address=address;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.gender = gender;
+        this.birth = birth;
         this.account = account;
     }
 
@@ -67,5 +79,37 @@ public class Patient {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
     }
 }

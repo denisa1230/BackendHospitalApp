@@ -13,5 +13,5 @@ public interface DrugRepository extends JpaRepository<Drug, Integer> {
     public Drug findByDrugName(String drugName);
 
     public Drug findByIdDrug (Integer id);
-    public List<Drug> findAll();
+
 }

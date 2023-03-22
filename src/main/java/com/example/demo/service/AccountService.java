@@ -20,7 +20,7 @@ public class AccountService {
     private PatientService patientService;
 
     public Account getAccountByEmail(String email) {
-        return accountRepository.getByEmail(email);
+        return accountRepository.findByEmail(email);
     }
 
     public Account saveDoctorAccount(DoctorAccountDto doctorAccount) {
