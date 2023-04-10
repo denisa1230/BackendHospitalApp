@@ -5,29 +5,52 @@ import com.example.demo.entity.Doctor;
 import com.example.demo.entity.Patient;
 import com.example.demo.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
+@CrossOrigin(maxAge = 3600)
+@RequestMapping("/appointments")
 public class AppointmentController {
     @Autowired
     AppointmentService appointmentService;
 
+    @GetMapping("getByPatient/{id}")
+    public List<Appointment> getAppointmentByPatient(@PathVariable Integer id){
+        return  appointmentService.getAppointmentByPatient(id);
+    }
 
-    @GetMapping("getByPatient")
-    public List<Appointment> getAppointementByPatient(@RequestBody Patient patient){
-        return  appointmentService.getByPatient(patient);
+    @GetMapping("/getAppointmentByDoctor/{id}")
+    public List<Appointment> getAppointmentByDoctor(@PathVariable Integer id) {
+        return appointmentService.getAppointmentByDoctorId(id);
+
     }
-    @GetMapping("getByDoctor")
-    public List<Appointment> getAppointementByDoctor(@RequestBody Doctor doctor){
-        return  appointmentService.getByDoctor(doctor);
-    }
-    @PostMapping("saveAppointment")
+    @PostMapping("/saveAppointment")
     public void saveAppointment(@RequestBody Appointment appointment)
     {
         appointmentService.saveAppointment(appointment);
     }
+    @GetMapping("findAllAppointments")
+    public  List<Appointment> findAllAppointments()
+    {
+        return appointmentService.getAllAppoitement();
+    }
+
+    @PostMapping(value="/updateAppointment")
+    public void updateAppointment(@RequestBody Appointment appointment)
+    {
+        appointmentService.updateAppointment(appointment, appointment.getIdAppoiment());
+    }
+    @GetMapping(value="/deleteAppointment/{id}")
+    public void deleteAppointment(@PathVariable Integer id){
+        appointmentService.deleteAppointment(id);
+    }
+
 }

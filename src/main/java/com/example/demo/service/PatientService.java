@@ -25,6 +25,9 @@ public class PatientService {
     public List<Patient> getAllPatient() {
         return patientReposiroty.findAll();
     }
+    public Patient  findById(Integer id){
+        return patientReposiroty.findByIdPatient(id);
+    }
 
     public Patient savePatient(Patient patient) {
         Account account = accountRepository.findByEmail(patient.getAccount().getEmail());

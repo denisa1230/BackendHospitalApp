@@ -26,6 +26,10 @@ public class PatientController {
     public List<Patient> getAllPatient() {
         return patientService.getAllPatient();
     }
+    @GetMapping("getIdPatient/{id}")
+    public Patient getIdPatient(@PathVariable Integer id) {
+        return patientService.findById(id);
+    }
 
     @PostMapping(value="/updatePatient")
     public void updatePatient(@RequestBody Patient patient){
