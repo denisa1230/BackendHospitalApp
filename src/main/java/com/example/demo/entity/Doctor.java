@@ -1,9 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import java.sql.Time;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+
 
 @Entity
 public class Doctor {

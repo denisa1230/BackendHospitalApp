@@ -1,5 +1,4 @@
 package com.example.demo.entity;
-
 import javax.persistence.*;
 
 @Entity
@@ -8,12 +7,15 @@ public class Consultation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idConsultation;
     private String details;
-    @ManyToOne
+
+    @OneToOne
     @JoinColumn(name = "idAppointment")
     private Appointment appointment;
     @ManyToOne
     @JoinColumn(name = "idDiagnostic")
     private Diagnostic diagnostic;
+
+
 
     public Consultation() {
     }
@@ -56,4 +58,6 @@ public class Consultation {
     public void setDiagnostic(Diagnostic diagnostic) {
         this.diagnostic = diagnostic;
     }
+
+
 }

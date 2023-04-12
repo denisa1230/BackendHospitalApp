@@ -6,9 +6,10 @@ import com.example.demo.repository.AppointmentRepository;
 import com.example.demo.repository.ConsultationRepository;
 import com.example.demo.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ConsultationService {
     @Autowired
    private ConsultationRepository consultationRepository;
@@ -28,8 +29,8 @@ public class ConsultationService {
         return consultationRepository.getConsultationByAppointment(appointment);
     }
 
-    public void saveDiagnostic(Consultation diagnostic) {
-        consultationRepository.save(diagnostic);
+    public void saveConsultation(Consultation consultation) {
+        consultationRepository.save(consultation);
     }
 
 }
