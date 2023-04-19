@@ -21,8 +21,7 @@ public class ConsultationMedicine {
     public ConsultationMedicine() {
     }
 
-    public ConsultationMedicine(Integer idConsultationMedicine, Drug drug, Consultation consultation) {
-        this.idConsultationMedicine = idConsultationMedicine;
+    public ConsultationMedicine( Drug drug, Consultation consultation) {
         this.drug = drug;
         this.consultation = consultation;
     }

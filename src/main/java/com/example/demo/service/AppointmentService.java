@@ -23,12 +23,6 @@ public class AppointmentService {
     DoctorRepository doctorRepository;
 
     public void saveAppointment(Appointment appointment) {
-        if (appointment.getHour() < 9 && appointment.getHour() > 17)
-            throw new IllegalArgumentException("The selected hour should be between 9 and 17!");
-
-        if (appointmentRepository.existsByDateAndHour(appointment.getDate(), appointment.getHour()))
-            throw new IllegalArgumentException("this appointment already exists!");
-
         appointmentRepository.save(appointment);
     }
 
@@ -51,7 +45,7 @@ public class AppointmentService {
     }
     public Appointment updateAppointment(Appointment appointment, Integer id)
     {
-        Appointment appointment1=appointmentRepository.findByIdAppoiment(id);
+        Appointment appointment1=appointmentRepository.findByIdAppointment(id);
         appointment1.setHour(appointment.getHour());
         appointment1.setDate(appointment.getDate());
         appointment1.setStatus(appointment.getStatus());
@@ -64,10 +58,13 @@ public class AppointmentService {
     public void  deleteAppointment(Integer id){
         List<Appointment> appointments=appointmentRepository.findAll();
         for (Appointment a: appointments){
-            if(a.getIdAppoiment()==id)
+            if(a.getIdAppointment()==id)
             {
                 appointmentRepository.delete(a);
             }
         }
+    }
+    public Appointment findAppointmentById (Integer id){
+        return appointmentRepository.findByIdAppointment(id);
     }
 }

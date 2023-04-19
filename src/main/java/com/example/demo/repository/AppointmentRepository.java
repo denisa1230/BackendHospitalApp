@@ -12,7 +12,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
     List<Appointment> findByDoctor(Doctor doctor);
 
     List<Appointment> findByPatient(Patient patient);
-    Appointment findByIdAppoiment(Integer id);
+    Appointment findByIdAppointment(Integer id);
 
     boolean existsByDateAndHour(LocalDate date, int hour);
 

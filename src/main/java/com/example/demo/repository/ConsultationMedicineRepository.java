@@ -1,4 +1,15 @@
 package com.example.demo.repository;
 
-public interface ConsultationMedicineRepository {
+import com.example.demo.entity.Appointment;
+import com.example.demo.entity.Consultation;
+import com.example.demo.entity.ConsultationMedicine;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface ConsultationMedicineRepository extends JpaRepository<ConsultationMedicine, Integer> {
+
+
+
+
 }

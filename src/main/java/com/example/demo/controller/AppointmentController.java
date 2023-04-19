@@ -26,6 +26,10 @@ public class AppointmentController {
     public List<Appointment> getAppointmentByPatient(@PathVariable Integer id){
         return  appointmentService.getAppointmentByPatient(id);
     }
+    @GetMapping("getAppointmentById/{id}")
+    public Appointment getAppointmentById(@PathVariable Integer id){
+        return appointmentService.findAppointmentById(id);
+    }
 
     @GetMapping("/getAppointmentByDoctor/{id}")
     public List<Appointment> getAppointmentByDoctor(@PathVariable Integer id) {
@@ -46,7 +50,7 @@ public class AppointmentController {
     @PostMapping(value="/updateAppointment")
     public void updateAppointment(@RequestBody Appointment appointment)
     {
-        appointmentService.updateAppointment(appointment, appointment.getIdAppoiment());
+        appointmentService.updateAppointment(appointment, appointment.getIdAppointment());
     }
     @GetMapping(value="/deleteAppointment/{id}")
     public void deleteAppointment(@PathVariable Integer id){

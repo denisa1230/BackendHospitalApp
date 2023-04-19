@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idAppoiment;
+    private Integer idAppointment;
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
@@ -32,8 +32,8 @@ public class Appointment {
     private Patient patient;
 
 
-    public Appointment(Integer idAppoiment, LocalDate date, Doctor doctor, Patient patient,String status) {
-        this.idAppoiment = idAppoiment;
+    public Appointment(Integer idAppointment, LocalDate date, Doctor doctor, Patient patient,String status) {
+        this.idAppointment = idAppointment;
         this.date = date;
         this.doctor = doctor;
         this.patient = patient;
@@ -43,12 +43,12 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Integer getIdAppoiment() {
-        return idAppoiment;
+    public Integer getIdAppointment() {
+        return idAppointment;
     }
 
-    public void setIdAppoiment(Integer idAppoiment) {
-        this.idAppoiment = idAppoiment;
+    public void setIdAppointment(Integer idAppointment) {
+        this.idAppointment = idAppointment;
     }
 
     public LocalDate getDate() {
