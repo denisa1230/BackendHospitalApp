@@ -10,4 +10,5 @@ public interface ConsultationRepository extends JpaRepository<Consultation, Inte
     public List<Consultation> getConsultationByAppointment(Appointment appointment);
 
 
+
 }

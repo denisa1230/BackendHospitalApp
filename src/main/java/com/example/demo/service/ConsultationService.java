@@ -8,6 +8,7 @@ import com.example.demo.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class ConsultationService {
@@ -31,6 +32,17 @@ public class ConsultationService {
 
     public void saveConsultation(Consultation consultation) {
         consultationRepository.save(consultation);
+    }
+    public List<Consultation> getConsultationByEmail(String email){
+
+        List<Consultation> consultations= consultationRepository.findAll();
+        List<Consultation> consultationPatient=new ArrayList<>();
+        for (int i=0;i<consultations.size();i++) {
+            if (consultations.get(i).getAppointment().getPatient().getEmail().equals(email)) {
+                consultationPatient.add(consultations.get(i));
+            }
+        }
+        return consultationPatient;
     }
 
 }

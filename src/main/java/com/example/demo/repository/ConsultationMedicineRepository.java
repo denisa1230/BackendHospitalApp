@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ConsultationMedicineRepository extends JpaRepository<ConsultationMedicine, Integer> {
 
-
+public List<ConsultationMedicine> findByConsultation(Consultation consultation);
 
 
 }

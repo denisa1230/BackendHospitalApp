@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +33,10 @@ public class ConsultationController {
     @PostMapping("saveConsultation")
     public void saveConsultation(@RequestBody Consultation consultation) {
         consultationService.saveConsultation(consultation);
+    }
+    @GetMapping("getConsultationByUsername/{email}")
+    public List<Consultation> getConsultationByUsername(@PathVariable String email)
+    {
+        return consultationService.getConsultationByEmail(email);
     }
 }
