@@ -5,6 +5,8 @@ import com.example.demo.repository.DiagnosticRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -41,5 +43,6 @@ public class DiagnosticService {
         diagnostic1.setStatus(diagnostic.getStatus());
         return diagnosticRepository.save(diagnostic1);
     }
+
 
 }

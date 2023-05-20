@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Appointment;
 import com.example.demo.entity.Consultation;
+import com.example.demo.entity.Doctor;
 import com.example.demo.service.ConsultationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Month;
+import java.util.HashMap;
 import java.util.List;
 @RestController
 @CrossOrigin(maxAge = 3600)
@@ -38,5 +41,18 @@ public class ConsultationController {
     public List<Consultation> getConsultationByUsername(@PathVariable String email)
     {
         return consultationService.getConsultationByEmail(email);
+    }
+    @GetMapping("findAllConsultation")
+    public List<Consultation> getAllConsultation() {
+        return consultationService.findAllConsultation();
+    }
+
+    @GetMapping("findConsultationByNrOfMonth")
+    public HashMap<Month, Integer> findConsultationByNrOfMonth() {
+        return  consultationService.countDiagnosticByMount();
+    }
+    @GetMapping("countDiagnostic")
+    public HashMap<String, Integer> countDiagnostic() {
+        return consultationService.countDiagnostic();
     }
 }

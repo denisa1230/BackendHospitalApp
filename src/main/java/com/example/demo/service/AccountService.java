@@ -38,4 +38,13 @@ public class AccountService {
         return account;
     }
 
+    public Account updateAccount (Account account, Integer id){
+        Account account1=accountRepository.findByIdAccount(id);
+        account1.setIdAccount(account.getIdAccount());
+        account1.setEmail(account.getEmail());
+        account1.setPassword(account.getPassword());
+        account1.setType(account.getType());
+        return accountRepository.save(account1);
+    }
+
 }

@@ -8,6 +8,7 @@ public class Consultation {
     private Integer idConsultation;
     private String details;
 
+
     @OneToOne
     @JoinColumn(name = "idAppointment")
     private Appointment appointment;

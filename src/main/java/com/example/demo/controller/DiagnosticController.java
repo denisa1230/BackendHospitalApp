@@ -5,6 +5,8 @@ import com.example.demo.service.DiagnosticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Month;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -40,4 +42,6 @@ public class DiagnosticController {
     public void updateDiagnostic(@RequestBody Diagnostic possibleDiagnosis){
         diagnosticService.updateDiagnostic(possibleDiagnosis, possibleDiagnosis.getIdDiagnostic());
     }
+
+
 }

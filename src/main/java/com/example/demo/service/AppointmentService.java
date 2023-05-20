@@ -9,6 +9,7 @@ import com.example.demo.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -66,5 +67,17 @@ public class AppointmentService {
     }
     public Appointment findAppointmentById (Integer id){
         return appointmentRepository.findByIdAppointment(id);
+    }
+
+    public List<Appointment> getAppointmentBYMonth (Integer month){
+        List <Appointment> appointments=appointmentRepository.findAll();
+        List<Appointment> appointments1= new ArrayList<>();
+        for (int i=0;i<appointments.size();i++)
+        {
+            if (appointments.get(i).getDate().getMonth().equals(month)){
+                appointments1.add(appointments.get(i));
+            }
+        }
+        return  appointments1;
     }
 }

@@ -12,7 +12,7 @@ public class Patient {
     private String lastName;
     private String address;
 
-    private Long phone;
+    private String phone;
 
     private String email;
 
@@ -28,7 +28,7 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(Integer idPatient, String firstName, String lastName, String address, Long phone, String email, String gender, Date birth, Account account) {
+    public Patient(Integer idPatient, String firstName, String lastName, String address, String phone, String email, String gender, Date birth, Account account) {
         this.idPatient = idPatient;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -81,11 +81,11 @@ public class Patient {
         this.address = address;
     }
 
-    public Long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

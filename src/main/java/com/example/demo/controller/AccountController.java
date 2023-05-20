@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.DoctorAccountDto;
 import com.example.demo.dto.PatientAccountDto;
 import com.example.demo.entity.Account;
+import com.example.demo.entity.Doctor;
 import com.example.demo.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,4 +38,9 @@ public class AccountController {
     public Account saveDoctorAccount(DoctorAccountDto doctorAccountDto){
         return accountService.saveDoctorAccount(doctorAccountDto);
     }
+    @PostMapping (value = "/updateAccount")
+    public void updateAccount(@RequestBody Account account){
+        accountService.updateAccount(account, account.getIdAccount());
+    }
+
 }

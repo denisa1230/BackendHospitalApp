@@ -14,7 +14,7 @@ public class Doctor {
     private String lastName;
     private String email;
 
-    private Long phone;
+    private String phone;
     private String description;
     private String specialization;
     private String program;
@@ -31,7 +31,7 @@ public class Doctor {
     }
 
 
-    public Doctor(Integer idDoctor, String firstName, String lastName, String email, Long phone, String description, String specialization, Section section, Account account, String program) {
+    public Doctor(Integer idDoctor, String firstName, String lastName, String email, String phone, String description, String specialization, Section section, Account account, String program) {
         this.idDoctor = idDoctor;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -100,11 +100,11 @@ public class Doctor {
         this.account = account;
     }
 
-    public Long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

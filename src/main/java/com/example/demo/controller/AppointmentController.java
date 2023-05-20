@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -45,6 +46,11 @@ public class AppointmentController {
     public  List<Appointment> findAllAppointments()
     {
         return appointmentService.getAllAppoitement();
+    }
+    @GetMapping("findAllAppointmentsByMonth")
+    public  List<Appointment> findAllAppointmentsByMonth(Integer month)
+    {
+        return appointmentService.getAppointmentBYMonth(month);
     }
 
     @PostMapping(value="/updateAppointment")

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -31,5 +32,9 @@ public class ConsultationMedicineController {
     @PostMapping("getDrugConsultation")
     public List<String> getDrugByConsultation(@RequestBody Consultation consultation) {
         return consultationMedicineService.getDrugs(consultation);
+    }
+    @GetMapping("findNumberOfDrugs")
+    public HashMap<String, Integer> findNumberOfDrugs() {
+        return  consultationMedicineService.getAllDrugs();
     }
 }
