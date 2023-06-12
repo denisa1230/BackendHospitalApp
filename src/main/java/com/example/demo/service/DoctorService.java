@@ -59,6 +59,7 @@ public class DoctorService {
        doctor1.setPhone(doctor.getPhone());
        doctor1.setProgram(doctor.getProgram());
        doctor1.setSpecialization(doctor.getSpecialization());
+       doctor1.setBirth(doctor.getBirth());
        return doctorRepository.save(doctor1);
     }
 }

@@ -1,14 +1,18 @@
 package com.example.demo.service;
 
+
 import com.example.demo.dto.DoctorAccountDto;
 import com.example.demo.dto.PatientAccountDto;
 import com.example.demo.entity.Account;
 import com.example.demo.entity.Doctor;
 import com.example.demo.entity.Patient;
 import com.example.demo.repository.AccountRepository;
-import com.example.demo.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 public class AccountService {
@@ -18,6 +22,11 @@ public class AccountService {
     private DoctorService doctorService;
     @Autowired
     private PatientService patientService;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     public Account getAccountByEmail(String email) {
         return accountRepository.findByEmail(email);

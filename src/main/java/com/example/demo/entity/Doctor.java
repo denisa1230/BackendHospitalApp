@@ -1,8 +1,9 @@
 package com.example.demo.entity;
 
-import org.intellij.lang.annotations.Pattern;
+
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -13,11 +14,12 @@ public class Doctor {
     private String firstName;
     private String lastName;
     private String email;
-
     private String phone;
     private String description;
     private String specialization;
     private String program;
+
+    private Date birth;
 
     @ManyToOne
     @JoinColumn(name="idSection")
@@ -31,7 +33,7 @@ public class Doctor {
     }
 
 
-    public Doctor(Integer idDoctor, String firstName, String lastName, String email, String phone, String description, String specialization, Section section, Account account, String program) {
+    public Doctor(Integer idDoctor, String firstName, String lastName, String email, String phone, String description, String specialization, Section section, Account account, String program, Date birth) {
         this.idDoctor = idDoctor;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,6 +44,7 @@ public class Doctor {
         this.section = section;
         this.account = account;
         this.program=program;
+        this.birth=birth;
     }
 
     public Integer getIdDoctor() {
@@ -122,5 +125,13 @@ public class Doctor {
 
     public void setProgram(String program) {
         this.program = program;
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
     }
 }
