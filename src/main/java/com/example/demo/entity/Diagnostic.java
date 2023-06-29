@@ -13,8 +13,8 @@ public class Diagnostic {
 
     private String name;
     private String details;
-
     private String status;
+
 
     public Diagnostic() {
     }

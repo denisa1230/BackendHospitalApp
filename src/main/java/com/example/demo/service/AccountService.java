@@ -9,13 +9,14 @@ import com.example.demo.entity.Patient;
 import com.example.demo.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import org.springframework.stereotype.Service;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.Base64;
+
 
 @Service
-public class AccountService {
+public class AccountService{
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
@@ -23,18 +24,17 @@ public class AccountService {
     @Autowired
     private PatientService patientService;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
     public Account getAccountByEmail(String email) {
+
         return accountRepository.findByEmail(email);
     }
 
-    public Account saveDoctorAccount(DoctorAccountDto doctorAccount) {
-        Account account = accountRepository.save(new Account(doctorAccount.getEmail(), doctorAccount.getPassword(),"doctor"));
-        Doctor doctor = doctorAccount.getDoctor();
+
+
+    public Account saveDoctorAccount(DoctorAccountDto doctorAccountDto) {
+        Account account = accountRepository.save(new Account(doctorAccountDto.getEmail(),doctorAccountDto.getPassword(),"doctor"));
+        Doctor doctor = doctorAccountDto.getDoctor();
         doctor.setAccount(account);
         doctorService.saveDoctor(doctor);
         return account;
@@ -55,5 +55,6 @@ public class AccountService {
         account1.setType(account.getType());
         return accountRepository.save(account1);
     }
+
 
 }

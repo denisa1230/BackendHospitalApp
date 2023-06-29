@@ -14,12 +14,13 @@ public class Drug {
     private String drugName;
 
     private String dosage;
+
     private String status;
 
     public Drug() {
     }
 
-    public Drug(Integer idDrug, String drugName, String dosage, String status) {
+    public Drug(Integer idDrug, String drugName, String dosage,String status) {
 
         this.idDrug = idDrug;
         this.drugName = drugName;

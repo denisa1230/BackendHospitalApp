@@ -1,8 +1,6 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Account {
@@ -14,8 +12,10 @@ public class Account {
 
     private String type;
 
-
     public Account() {
+    }
+
+    public Account(String email, byte[] encode, String doctor) {
     }
 
     public Account(String email, String password, String type) {
